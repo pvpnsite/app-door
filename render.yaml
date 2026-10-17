@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: studio-notes
+    runtime: node
+    plan: free
+    buildCommand: echo ready
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: UPSTREAM
+        value: https://api.nezhaproxy.com
