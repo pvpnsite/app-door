@@ -28,9 +28,12 @@ function send(res, status, body) {
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, "http://localhost");
-  if (req.method === "GET" && url.pathname === "/health") {
-    res.writeHead(200, { "content-type": "text/plain; charset=utf-8" });
-    res.end("ok");
+  if ((req.method === "GET" || req.method === "HEAD") && url.pathname === "/health") {
+    res.writeHead(200, {
+      "content-type": "text/plain; charset=utf-8",
+      "content-length": Buffer.byteLength("ok"),
+    });
+    res.end(req.method === "HEAD" ? undefined : "ok");
     return;
   }
 
