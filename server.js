@@ -14,6 +14,7 @@ const allowed = new Set([
   "POST /v1/auth/resend-verification",
   "POST /v1/auth/web-handoff",
   "GET /v1/plans",
+  "GET /v1/me",
   "GET /v1/subscription",
   "POST /v1/devices",
   "GET /v1/servers",
